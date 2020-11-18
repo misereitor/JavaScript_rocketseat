@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-nr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 01</title>
+</head>
+<body>
+    <div>
+        <button id="new">Clique em mim</button>
+    </div>
+    <div id="box">
+
+    </div>
+    <ul style="text-transform: capitalize"></ul>
+    <input type="text" name="nome">
+    <button onClick="adicionar()">Adicionar</button>
+    <script>
+        let nomes = ["diego", "gabriel", "lucas"]
+        nomes.sort()
+
+        let add = document.querySelector("input")
+
+        let botao = document.querySelector("#new")
+        let box = document.querySelector("#box")
+        botao.onclick = function(){
+            let createBox = document.createElement("p")
+            createBox.style.width = "100px"
+            createBox.style.height = "100px"
+            createBox.style.backgroundColor = "#f00"
+            createBox.style.display = "inline-block"
+            createBox.style.margin = "5px"
+
+            createBox.onmouseenter = function(){
+                createBox.style.backgroundColor = getRandomColor()
+            }
+
+            box.appendChild(createBox)
+        }
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        let addNome = document.querySelector("ul")
+        nomes.forEach(function(nome){
+            addNome.innerHTML += `<li>${nome}</li>`
+        })
+        function adicionar() {
+            if (add.value.trim() === ""){
+                alert("Preencha o campo adicionar")
+            } else {
+                addNome.innerHTML = ""
+                nomes.push(add.value.toLowerCase())
+                nomes.sort()
+                nomes.forEach(function(nome){
+                addNome.innerHTML += `<li>${nome}</li>`
+                console.log(nome)
+                })
+                add.value = ""
+            }
+        }
+    </script>
+</body>
+</html>

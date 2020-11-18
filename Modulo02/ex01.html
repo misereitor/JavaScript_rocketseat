@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-nr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 01</title>
+</head>
+<body>
+    <div>
+        <button id="app" onkeypress="clicar()">Clique em mim</button>
+    </div>
+    <div id="box">
+
+    </div>
+    <script>
+        const botao = document.querySelector("#app")
+        function clicar(){
+            let box = document.querySelector("#box")
+            box.innerHTML += '<p style="margin: 5px; display: inline-block; width: 100px; height: 100px; background-color: #f00;"></p>'
+        }
+    </script>
+</body>
+</html>
